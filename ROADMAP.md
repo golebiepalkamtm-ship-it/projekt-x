@@ -16,7 +16,7 @@ Specify each user journey, state, permission, empty state, error, notification, 
 
 Model entities, invariants, lifecycle events, ownership, retention, access policies, and indexes before ORM schemas.
 
-## Phase 4 — UX and AI Bibles
+## Phase 4 — UX and AI Bibles (complete baseline)
 
 Define interaction contracts, accessibility, AI-assisted decisions, evaluation, monitoring, and human override.
 
