@@ -11,3 +11,4 @@ All notable changes follow the spirit of Keep a Changelog. Versions are assigned
 - Decision and RFC templates plus the first architecture decisions.
 - Enterprise Blueprint package: context boundaries, NFRs, product capabilities, data invariants, safety, privacy, testing, and delivery contracts.
 - Product Bible package: account, profile, discovery, communications, safety, commerce, operations, data-model and security journey contracts.
+- Database Bible package: entity catalogue, relationships, lifecycles, data access, RLS, migrations, events, retention, and recovery contracts.

@@ -14,6 +14,7 @@ Project Memory records decisions that change how ESEP is built or operated. It i
 | 2026-07-16 | Trust-sensitive features require human override | Automated ranking or enforcement must not become unreviewable authority. | AI, moderation, support, security | ADR-0002 |
 | 2026-07-16 | Market-sensitive requirements stay explicit and open | The project must not invent legality, eligibility, or payment rules before accountable approval. | Product, safety, commerce, data | RFC-0001 |
 | 2026-07-16 | Product flows are stateful and policy-bound | Journeys must define permissions, edge states, privacy, safety and operational behavior before UI or APIs. | Product, API, testing, data | Product Bible |
+| 2026-07-16 | Logical data design precedes ORM schema | Invariants, ownership, access, lifecycle, events and retention must be settled before physical schema work. | Database, API, security, operations | Database Bible |
 
 ### Entry format
 
