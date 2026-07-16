@@ -1,3 +1,3 @@
-# API Contracts
+# OpenAPI
 
-OpenAPI specifications will be added only after RFC-0001 resolves market boundaries and Product Bible flows identify stable client contracts. Each endpoint will document authentication, authorization, idempotency, error shapes, rate limits, audit behavior, and personal-data classification.
+`openapi.yaml` documents public API-edge contracts only. Internal bounded-context communication follows the eventing contract and is not REST surface.

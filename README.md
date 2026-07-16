@@ -13,8 +13,11 @@ The project is in **Foundation**. The documents in this first package establish 
 - [Product principles](product/product-principles.md) — rules for user-facing design.
 - [Architecture overview](architecture/system-context.md) — system boundaries.
 - [Data principles](database/data-principles.md) — database design contract.
+- [AI Operating Manual](ai/ai-operating-manual.md) — required coding rules.
 - [AI policy](ai/ai-governance.md) — human control and model safeguards.
 - [Security baseline](security/security-baseline.md) — minimum security posture.
+- [Prisma schema](prisma/schema.prisma) — canonical physical data model.
+- [OpenAPI](openapi/openapi.yaml) — public API-edge surface.
 
 ## Working agreement
 

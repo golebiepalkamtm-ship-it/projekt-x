@@ -1,14 +1,14 @@
 ---
-status: proposed
+status: accepted
 owner: product
 last_reviewed: 2026-07-16
 ---
 
 # RFC-0001: Define ESEP’s market and policy envelope
 
-## Decision required
+## Decision
 
-Approve the target customer, jurisdictions, age and eligibility policy, permitted services/content, prohibited activities, and payment/identity-verification strategy.
+Resolved by the approved market and policy envelope in `docs/enterprise-blueprint.md` on 2026-07-16.
 
 ## Why now
 

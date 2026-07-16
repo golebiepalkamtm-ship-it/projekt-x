@@ -1,3 +1,3 @@
-# Prisma Boundary
+# Prisma
 
-Prisma schemas are implementation projections of the approved Database Bible. Do not add a model here before its owner, invariants, relations, lifecycle, retention, indexes, and access policy are specified in `database/`.
+`schema.prisma` is the canonical physical data model, kept in sync with `database/*-entity.md`. Run `npx prisma validate` and migrations in local development or CI. A model and its entity contract change in the same commit.

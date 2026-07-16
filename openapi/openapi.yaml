@@ -1,0 +1,68 @@
+openapi: 3.1.0
+info:
+  title: ESEP / HEXXXO Platform API
+  version: 0.1.0
+  description: Public API-edge surface; internal context communication uses events.
+servers:
+  - url: https://api.hexxxo.example/v1
+components:
+  securitySchemes:
+    sessionAuth:
+      type: apiKey
+      in: cookie
+      name: hx_session
+  schemas:
+    Error:
+      type: object
+      required: [code, message, correlationId]
+      properties:
+        code: {type: string}
+        message: {type: string}
+        correlationId: {type: string}
+    Money:
+      type: object
+      required: [amountMinor, currency]
+      properties:
+        amountMinor: {type: integer}
+        currency: {type: string, enum: [PLN, EUR, USD]}
+    Profile:
+      type: object
+      properties:
+        id: {type: string}
+        status: {type: string, enum: [DRAFT, PUBLISHED, ARCHIVED]}
+        displayName: {type: string}
+        bio: {type: string}
+        visibilityPolicy: {type: string}
+    PaymentIntent:
+      type: object
+      properties:
+        id: {type: string}
+        status: {type: string, enum: [CREATED, REQUIRES_ACTION, AUTHORISED, CAPTURED, FAILED, EXPIRED, CANCELLED]}
+        amount: {$ref: '#/components/schemas/Money'}
+security:
+  - sessionAuth: []
+paths:
+  /profiles/{id}:
+    get:
+      operationId: getProfile
+      parameters:
+        - {name: id, in: path, required: true, schema: {type: string}}
+      responses:
+        '200': {description: OK, content: {application/json: {schema: {$ref: '#/components/schemas/Profile'}}}}
+        '404': {description: Not found, content: {application/json: {schema: {$ref: '#/components/schemas/Error'}}}}
+  /profiles/{id}/publish:
+    post:
+      operationId: publishProfile
+      summary: Requires a passed AGE_18_PLUS assertion.
+      parameters:
+        - {name: id, in: path, required: true, schema: {type: string}}
+      responses:
+        '200': {description: Published, content: {application/json: {schema: {$ref: '#/components/schemas/Profile'}}}}
+        '422': {description: Verification requirement not met, content: {application/json: {schema: {$ref: '#/components/schemas/Error'}}}}
+  /payment-intents:
+    post:
+      operationId: createPaymentIntent
+      parameters:
+        - {name: Idempotency-Key, in: header, required: true, schema: {type: string}}
+      responses:
+        '201': {description: Created, content: {application/json: {schema: {$ref: '#/components/schemas/PaymentIntent'}}}}

@@ -1,0 +1,98 @@
+generator client { provider = "prisma-client-js" }
+datasource db { provider = "postgresql"; url = env("DATABASE_URL") }
+
+enum AccountStatus { PENDING ACTIVE SUSPENDED CLOSED_BY_USER CLOSED_BY_ENFORCEMENT }
+enum VerificationClaimType { AGE_18_PLUS IDENTITY_DOCUMENT LIVENESS PAYOUT_ELIGIBILITY }
+enum VerificationResult { PASSED FAILED INCONCLUSIVE }
+enum ProfileStatus { DRAFT PUBLISHED ARCHIVED }
+enum Currency { PLN EUR USD }
+enum PaymentIntentStatus { CREATED REQUIRES_ACTION AUTHORISED CAPTURED FAILED EXPIRED CANCELLED }
+enum EnforcementType { WARNING CONTENT_REMOVAL FEATURE_RESTRICTION SUSPENSION PERMANENT_BAN PAYOUT_HOLD }
+
+model Account {
+  id String @id @default(cuid())
+  status AccountStatus @default(PENDING)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  profiles Profile[]
+  verifications VerificationAssertion[]
+  @@index([status])
+}
+model VerificationAssertion {
+  id String @id @default(cuid())
+  subjectId String
+  subject Account @relation(fields: [subjectId], references: [id])
+  claimType VerificationClaimType
+  result VerificationResult
+  issuer String
+  evidenceRef String?
+  issuedAt DateTime @default(now())
+  expiresAt DateTime?
+  revokedAt DateTime?
+  supersedesId String? @unique
+  @@index([subjectId, claimType])
+}
+model Profile {
+  id String @id @default(cuid())
+  accountId String
+  account Account @relation(fields: [accountId], references: [id])
+  status ProfileStatus @default(DRAFT)
+  displayName String?
+  bio String? @db.Text
+  visibilityPolicy String @default("private")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@index([accountId, status])
+}
+model PaymentIntent {
+  id String @id @default(cuid())
+  actorId String
+  quoteVersion String
+  amountMinor Int
+  currency Currency
+  status PaymentIntentStatus @default(CREATED)
+  providerRef String?
+  idempotencyKey String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@unique([actorId, idempotencyKey])
+}
+model LedgerPosting {
+  id String @id @default(cuid())
+  transactionId String
+  debitAccount String
+  creditAccount String
+  amountMinor Int
+  currency Currency
+  effectiveAt DateTime
+  sourceEvent String
+  reason String
+  reversalOfId String?
+  createdAt DateTime @default(now())
+  @@index([transactionId])
+}
+model EnforcementAction {
+  id String @id @default(cuid())
+  subjectId String
+  scope String
+  actionType EnforcementType
+  effectiveAt DateTime @default(now())
+  expiresAt DateTime?
+  policyReason String
+  caseRef String
+  decisionActorId String
+  createdAt DateTime @default(now())
+  @@index([subjectId, expiresAt])
+}
+model AuditEvent {
+  id String @id @default(cuid())
+  actorId String?
+  actorCapability String
+  action String
+  targetRef String
+  outcome String
+  occurredAt DateTime @default(now())
+  correlationId String
+  @@index([targetRef])
+}
