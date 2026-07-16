@@ -9,3 +9,4 @@ All notable changes follow the spirit of Keep a Changelog. Versions are assigned
 - Project OS foundation and repository conventions.
 - Initial product, architecture, data, AI, security, testing, and delivery baselines.
 - Decision and RFC templates plus the first architecture decisions.
+- Enterprise Blueprint package: context boundaries, NFRs, product capabilities, data invariants, safety, privacy, testing, and delivery contracts.
