@@ -23,3 +23,7 @@ Define interaction contracts, accessibility, AI-assisted decisions, evaluation, 
 ## Phase 5 — Implementation
 
 Create API contracts, services, interfaces, tests, infrastructure, and operational runbooks from approved specifications.
+
+## Phase 6 — Enterprise Modules
+
+Specify and implement social, dating, directory, live, messaging, creator, marketplace, promotion, reputation, verification, notification, analytics, search and administration modules in policy-gated releases.

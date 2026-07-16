@@ -1,6 +1,6 @@
 # ESEP
 
-ESEP is a documentation-first blueprint for a large, trust-sensitive digital marketplace. The repository is the project’s operating system: decisions, product behavior, architecture, data design, delivery practices, and implementation contracts live here before they become code.
+ESEP is a documentation-first blueprint for an Enterprise Social Entertainment Platform. The repository is its operating system: decisions, product behavior, architecture, data design, delivery practices, and implementation contracts live here before code.
 
 ## Current state
 
@@ -10,6 +10,8 @@ The project is in **Foundation**. The documents in this first package establish 
 
 - [Project memory](docs/project-memory.md) — durable decision log.
 - [Enterprise blueprint](docs/enterprise-blueprint.md) — platform intent and boundaries.
+- [Vision 2.0](docs/vision-2.0.md) — canonical platform direction.
+- [Module catalog](product/module-catalog.md) — enterprise capability inventory.
 - [Product principles](product/product-principles.md) — rules for user-facing design.
 - [Architecture overview](architecture/system-context.md) — system boundaries.
 - [Data principles](database/data-principles.md) — database design contract.
