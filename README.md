@@ -1,0 +1,26 @@
+# ESEP
+
+ESEP is a documentation-first blueprint for a large, trust-sensitive digital marketplace. The repository is the project’s operating system: decisions, product behavior, architecture, data design, delivery practices, and implementation contracts live here before they become code.
+
+## Current state
+
+The project is in **Foundation**. The documents in this first package establish how we make and retain decisions; they do not claim that the product or its legal model has been approved.
+
+## Navigation
+
+- [Project memory](docs/project-memory.md) — durable decision log.
+- [Enterprise blueprint](docs/enterprise-blueprint.md) — platform intent and boundaries.
+- [Product principles](product/product-principles.md) — rules for user-facing design.
+- [Architecture overview](architecture/system-context.md) — system boundaries.
+- [Data principles](database/data-principles.md) — database design contract.
+- [AI policy](ai/ai-governance.md) — human control and model safeguards.
+- [Security baseline](security/security-baseline.md) — minimum security posture.
+
+## Working agreement
+
+1. A material product or technical decision receives an ADR and a Project Memory entry.
+2. Specifications precede implementation. Code may not silently redefine a documented contract.
+3. Open questions are explicit. Do not invent legal, payment, or policy requirements.
+4. Every public API and every personal-data flow must be documented and testable.
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for document conventions.
